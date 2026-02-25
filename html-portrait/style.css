@@ -1,7 +1,10 @@
 body {
-  background-image: url("assets/sky.gif");
+  background-image: url("assets/lovelanguage.JPG");
   background-size: cover;
   height: 100vh;
+  /*background-repeat: no-repeat;*/
+  /*background-position: 50px 25px;*/
+  font-family: monospace;
 }
 
 img {
@@ -9,19 +12,29 @@ img {
   border-radius: 20px;
   padding: 10px;
   transition: 1s;
-  filter: grayscale(100%);
+  filter: grayscale(30%);
   /*      border: 3px solid blue; */
 }
 
 img:hover {
-  height: 400px;
+  height: 300px;
   filter: grayscale(0%);
   /*   border: 1px solid red; */
 }
 
 p:hover {
   /*   transform: rotate(5deg); */
-  letter-spacing: 1em;
+  box-shadow: 1em;
+}
+
+#first-section {
+  line-height: 2px;
+  color: #639967;
+  background: white;
+}
+
+.matcha {
+  background: white;
 }
 
 .specialCenter {
