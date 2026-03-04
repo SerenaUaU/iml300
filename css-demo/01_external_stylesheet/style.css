@@ -1,0 +1,13 @@
+p {
+  color: red;
+  font-weight: bold;
+}
+
+.align{
+  text-align: center;
+  justify-content: center;
+}
+
+#p1{
+  font-size: large;
+}
