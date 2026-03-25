@@ -1,6 +1,95 @@
 html,
 body {
+    margin: 0;
+    padding: 0;
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#bg1 {
+    background-image: url("assets/video1.gif");
+    background-size: cover;
+    background-position: center;
+}
+#bg2 {
+    background-image: url("assets/water.gif");
+    background-size: cover;
+    background-position: center;
+}
+#bg4 {
+    background-image: url("assets/clock.gif");
+    background-size: cover;
+    background-position: center;
+}
+#end1 {
+    background-color: #222;
+    color: white;
+    font-family: impact;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#end2 {
+    background-color: #9a0101;
+    color: white;
+    font-family: impact;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+}
+#end2 p {
+    font-size: 100px;
+    text-align: center;
+    margin-top: 40vh;
+    animation: aggressive 0.5s infinite;
+}
+
+@keyframes aggressive {
+    0% {
+        transform: scale(1);
+        color: white;
+    }
+    50% {
+        transform: scale(1.6);
+        color: black;
+    }
+    100% {
+        transform: scale(1);
+        color: white;
+    }
+}
+#end1 {
+    color: greenyellow;
+}
+#p1 {
+    animation: coolAnimation 3s ease-in-out infinite;
+}
+#p2 {
+    animation: coolAnimation 3s infinite;
+}
+@keyframes coolAnimation {
+    0% {
+        opacity: 0%;
+        background-color: pink;
+    }
+    50% {
+        opacity: 50%;
+        scale: 1.2;
+        line-height: 0.1;
+        background-color: rgb(158, 199, 235);
+    }
+    70% {
+        margin-left: 100px;
+    }
+    100% {
+        opacity: 0%;
+    }
 }
 
 body.narration {
@@ -12,37 +101,50 @@ body.narration {
     background-color: #222;
     font-family: americantypewriter;
     font-size: 12px;
-    color: #eee;
+    color: #2d2d2d;
     line-height: 1.5;
 }
+.line {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
 
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/*
 .line {
     overflow: hidden;
     white-space: nowrap;
-    /*border-right:2px solid black;*/
+    border-right:2px solid black;
     margin: 9px 0;
     width: 0;
     animation: typing 2.5s steps(32, end) forwards;
 }
+*/
 .line1 {
     animation-delay: 0s;
 }
 .line2 {
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 .line3 {
-    animation-delay: 6s;
+    animation-delay: 4s;
 }
 .line4 {
-    animation-delay: 9s;
+    animation-delay: 6s;
 }
 .line5 {
-    animation-delay: 12s;
+    animation-delay: 8s;
 }
 .line6 {
-    animation-delay: 15s;
+    animation-delay: 10s;
 }
 
+/*
 @keyframes typing {
     from {
         width: 0;
@@ -51,16 +153,17 @@ body.narration {
         width: 100%;
     }
 }
+*/
 
 .next {
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     border-radius: 50%;
     background: white;
     display: block;
     position: absolute;
-    bottom: 230px;
-    right: 40px;
+    bottom: 10px;
+    right: 20px;
     transition:
         transform 0.5s ease,
         opacity 0.5s ease;
@@ -88,6 +191,26 @@ body.narration {
 }
 
 .choice {
-    color: #b9dcf3;
+    color: #5bb0e7;
     text-align: center;
+}
+
+#memo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60vh;
+    right: 5vh;
+    bottom: var(--footer-h);
+    overflow-y: auto;
+    padding: 18px;
+    -webkit-overflow-scrolling: touch;
+    z-index: 40;
+    background: transparent;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #b9dcf3;
+    border-radius: 18px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin: 10px auto;
 }
