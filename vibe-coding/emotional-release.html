@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let It Go</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Patrick Hand', 'Indie Flower', cursive;
+            background: #f5e6d3;
+            background-image: url('papertexture.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 200, 150, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 180, 180, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #8b4513;
+            font-weight: 700;
+            font-family: 'Caveat', cursive;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+            transform: rotate(-2deg);
+        }
+
+        .header p {
+            color: #a0522d;
+            font-size: 1.3rem;
+            font-family: 'Indie Flower', cursive;
+            transform: rotate(1deg);
+        }
+
+        .flower {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: flowerFadeIn 1.5s ease-out forwards;
+        }
+
+        .flower-1 {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0.3s;
+            transform: rotate(-15deg);
+        }
+
+        .flower-2 {
+            top: 35%;
+            right: 10%;
+            animation-delay: 0.6s;
+            transform: rotate(25deg);
+        }
+
+        .flower-3 {
+            bottom: 25%;
+            left: 12%;
+            animation-delay: 0.9s;
+            transform: rotate(10deg);
+        }
+
+        .flower-4 {
+            top: 60%;
+            right: 8%;
+            animation-delay: 1.2s;
+            transform: rotate(-20deg);
+        }
+
+        .flower-5 {
+            bottom: 15%;
+            right: 15%;
+            animation-delay: 1.5s;
+            transform: rotate(15deg);
+        }
+
+        .flower-6 {
+            top: 25%;
+            left: 5%;
+            animation-delay: 1.8s;
+            transform: rotate(-10deg);
+        }
+
+        @keyframes flowerFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(var(--flower-rotation, 0deg));
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .flower {
+                display: none;
+            }
+        }
+
+        .writing-area {
+            perspective: 1000px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .paper {
+            background: #fff5e6;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255, 200, 150, 0.15) 31px, rgba(255, 200, 150, 0.15) 32px);
+            width: 420px;
+            max-width: 90vw;
+            min-height: 320px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            transform-origin: center center;
+            transform: rotate(-1deg);
+            filter: drop-shadow(4px 6px 12px rgba(139, 69, 19, 0.25));
+        }
+
+        .paper::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 25px;
+            background: rgba(255, 215, 180, 0.6);
+            clip-path: polygon(
+                10% 0%, 90% 0%, 
+                95% 20%, 90% 40%, 95% 60%, 90% 80%, 95% 100%,
+                5% 100%, 10% 80%, 5% 60%, 10% 40%, 5% 20%
+            );
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .paper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #f4d7b8;
+            border-radius: 3px;
+            pointer-events: none;
+            box-shadow: 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+                inset 2px 2px 8px rgba(255, 200, 150, 0.3);
+        }
+
+        .paper.crumpling {
+            animation: crumple 1.2s ease-out forwards;
+        }
+
+        @keyframes crumple {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            30% {
+                transform: scale(0.9) rotate(5deg);
+            }
+            60% {
+                transform: scale(0.5) rotate(180deg);
+                border-radius: 50%;
+            }
+            100% {
+                transform: scale(0.15) rotate(360deg) translateY(300px);
+                border-radius: 50%;
+                opacity: 0.8;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            background: transparent;
+            border: none;
+            resize: vertical;
+            font-size: 1.1rem;
+            color: #5d4037;
+            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+            outline: none;
+        }
+
+        textarea::placeholder {
+            color: #bcaaa4;
+            font-style: italic;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in 0.3s forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .throw-btn {
+            background: #ffb6b9;
+            color: #8b4513;
+            border: 3px solid #8b4513;
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                4px 4px 0px #d4948f,
+                6px 6px 12px rgba(139, 69, 19, 0.3);
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            letter-spacing: 1px;
+            transform: rotate(1deg);
+            position: relative;
+        }
+
+        .throw-btn:hover {
+            transform: rotate(1deg) translateY(-3px);
+            box-shadow: 
+                5px 7px 0px #d4948f,
+                8px 10px 15px rgba(139, 69, 19, 0.35);
+        }
+
+        .throw-btn:active {
+            transform: rotate(1deg) translateY(-1px);
+            box-shadow: 
+                2px 3px 0px #d4948f,
+                4px 5px 8px rgba(139, 69, 19, 0.3);
+        }
+
+        .trash-area {
+            margin-top: 4rem;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trash-label {
+            color: #8b4513;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Caveat', cursive;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in 1s forwards;
+            transform: rotate(-1deg);
+        }
+
+        .trash-bin {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            min-height: 120px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.4);
+            border: 3px dashed #c9a87c;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .trash-bin::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(201, 168, 124, 0.05) 10px, rgba(201, 168, 124, 0.05) 20px);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .crumpled-ball {
+            width: 70px;
+            height: 70px;
+            background: 
+                radial-gradient(circle at 25% 25%, #fffbf5, #f5e6d3 40%, #e8d5be);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                3px 3px 8px rgba(139, 69, 19, 0.3),
+                inset -8px -8px 12px rgba(139, 69, 19, 0.15),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.6);
+            position: relative;
+            animation: appear 0.5s ease-out;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        @keyframes appear {
+            from {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .crumpled-ball:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 
+                4px 4px 12px rgba(139, 69, 19, 0.4),
+                inset -8px -8px 12px rgba(139, 69, 19, 0.15),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.6);
+        }
+
+        .crumpled-ball::before,
+        .crumpled-ball::after {
+            content: '';
+            position: absolute;
+            background: rgba(160, 82, 45, 0.15);
+            border-radius: 50%;
+        }
+
+        .crumpled-ball::before {
+            width: 22px;
+            height: 22px;
+            top: 12px;
+            left: 18px;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .crumpled-ball::after {
+            width: 16px;
+            height: 16px;
+            bottom: 15px;
+            right: 15px;
+            box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 69, 19, 0.3);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff5e6;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255, 200, 150, 0.15) 31px, rgba(255, 200, 150, 0.15) 32px);
+            padding: 3rem;
+            max-width: 520px;
+            width: 90%;
+            position: relative;
+            animation: uncrumple 0.6s ease-out;
+            filter: drop-shadow(8px 8px 20px rgba(139, 69, 19, 0.4));
+            transform: rotate(-1deg);
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 28px;
+            background: rgba(255, 215, 180, 0.7);
+            clip-path: polygon(
+                10% 0%, 90% 0%, 
+                95% 20%, 90% 40%, 95% 60%, 90% 80%, 95% 100%,
+                5% 100%, 10% 80%, 5% 60%, 10% 40%, 5% 20%
+            );
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #f4d7b8;
+            border-radius: 3px;
+            pointer-events: none;
+            box-shadow: 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+                inset 3px 3px 10px rgba(255, 200, 150, 0.3);
+        }
+
+        @keyframes uncrumple {
+            0% {
+                transform: scale(0.2) rotate(360deg);
+                border-radius: 50%;
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1) rotate(-1deg);
+                border-radius: 3px;
+                opacity: 1;
+            }
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            color: #5d4037;
+            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 2rem;
+            max-height: 400px;
+            overflow-y: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-close {
+            background: #ffb6b9;
+            color: #8b4513;
+            border: 3px solid #8b4513;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                3px 3px 0px #d4948f,
+                5px 5px 10px rgba(139, 69, 19, 0.3);
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            transform: rotate(1deg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-close:hover {
+            transform: rotate(1deg) translateY(-2px);
+            box-shadow: 
+                4px 5px 0px #d4948f,
+                6px 8px 12px rgba(139, 69, 19, 0.35);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .empty-message {
+            color: #a0522d;
+            font-style: italic;
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .paper {
+                width: 100%;
+                padding: 1.5rem;
+            }
+            
+            textarea {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Let It Go ~</h1>
+        <p>Write it down, then let it float away</p>
+    </div>
+
+    <!-- Decorative flowers -->
+    <div class="flower flower-1">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="8" fill="#ffb6b9" opacity="0.8"/>
+            <ellipse cx="40" cy="25" rx="8" ry="12" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="55" cy="40" rx="12" ry="8" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="40" cy="55" rx="8" ry="12" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="25" cy="40" rx="12" ry="8" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="50" cy="30" rx="10" ry="10" fill="#ffe4e4" opacity="0.6"/>
+            <ellipse cx="30" cy="50" rx="10" ry="10" fill="#ffe4e4" opacity="0.6"/>
+        </svg>
+    </div>
+    
+    <div class="flower flower-2">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="6" fill="#c9a87c" opacity="0.8"/>
+            <ellipse cx="30" cy="18" rx="6" ry="9" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="42" cy="30" rx="9" ry="6" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="30" cy="42" rx="6" ry="9" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="18" cy="30" rx="9" ry="6" fill="#e8d5be" opacity="0.7"/>
+        </svg>
+    </div>
+    
+    <div class="flower flower-3">
+        <svg width="70" height="70" viewBox="0 0 70 70">
+            <circle cx="35" cy="35" r="7" fill="#ffb6b9" opacity="0.8"/>
+            <circle cx="35" cy="20" r="7" fill="#ffd4d4" opacity="0.7"/>
+            <circle cx="50" cy="35" r="7" fill="#ffd4d4" opacity="0.7"/>
+            <circle cx="35" cy="50" r="7" fill="#ffd4d4" opacity="0.7"/>
+            <circle cx="20" cy="35" r="7" fill="#ffd4d4" opacity="0.7"/>
+            <circle cx="45" cy="25" r="6" fill="#ffe4e4" opacity="0.6"/>
+            <circle cx="45" cy="45" r="6" fill="#ffe4e4" opacity="0.6"/>
+            <circle cx="25" cy="25" r="6" fill="#ffe4e4" opacity="0.6"/>
+            <circle cx="25" cy="45" r="6" fill="#ffe4e4" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <div class="flower flower-4">
+        <svg width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="5" fill="#c9a87c" opacity="0.8"/>
+            <ellipse cx="25" cy="15" rx="5" ry="7" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="35" cy="25" rx="7" ry="5" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="25" cy="35" rx="5" ry="7" fill="#e8d5be" opacity="0.7"/>
+            <ellipse cx="15" cy="25" rx="7" ry="5" fill="#e8d5be" opacity="0.7"/>
+        </svg>
+    </div>
+
+    <div class="flower flower-5">
+        <svg width="65" height="65" viewBox="0 0 65 65">
+            <circle cx="32.5" cy="32.5" r="6" fill="#ffb6b9" opacity="0.8"/>
+            <ellipse cx="32.5" cy="20" rx="7" ry="10" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="45" cy="32.5" rx="10" ry="7" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="32.5" cy="45" rx="7" ry="10" fill="#ffd4d4" opacity="0.7"/>
+            <ellipse cx="20" cy="32.5" rx="10" ry="7" fill="#ffd4d4" opacity="0.7"/>
+        </svg>
+    </div>
+
+    <div class="flower flower-6">
+        <svg width="55" height="55" viewBox="0 0 55 55">
+            <circle cx="27.5" cy="27.5" r="5.5" fill="#c9a87c" opacity="0.8"/>
+            <circle cx="27.5" cy="17" r="6" fill="#e8d5be" opacity="0.7"/>
+            <circle cx="38" cy="27.5" r="6" fill="#e8d5be" opacity="0.7"/>
+            <circle cx="27.5" cy="38" r="6" fill="#e8d5be" opacity="0.7"/>
+            <circle cx="17" cy="27.5" r="6" fill="#e8d5be" opacity="0.7"/>
+        </svg>
+    </div>
+
+    <div class="writing-area">
+        <div class="paper" id="paper">
+            <textarea 
+                id="noteText" 
+                placeholder="What's on your mind today?&#10;&#10;Write freely. No one will judge.&#10;When you're ready, let it go..."
+            ></textarea>
+        </div>
+        <div class="button-container">
+            <button class="throw-btn" id="throwBtn">Let It Go ♡</button>
+        </div>
+    </div>
+
+    <div class="trash-area">
+        <div class="trash-label">Your Released Thoughts</div>
+        <div class="trash-bin" id="trashBin">
+            <div class="empty-message">Nothing here yet. When you're ready, write and release.</div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-text" id="modalText"></div>
+            <button class="modal-close" id="modalClose">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let notes = [];
+        let isAnimating = false;
+
+        const paper = document.getElementById('paper');
+        const noteText = document.getElementById('noteText');
+        const throwBtn = document.getElementById('throwBtn');
+        const trashBin = document.getElementById('trashBin');
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modalText');
+        const modalClose = document.getElementById('modalClose');
+
+        // Load notes from storage
+        function loadNotes() {
+            const stored = localStorage.getItem('releasedNotes');
+            if (stored) {
+                notes = JSON.parse(stored);
+                renderTrash();
+            }
+        }
+
+        // Save notes to storage
+        function saveNotes() {
+            localStorage.setItem('releasedNotes', JSON.stringify(notes));
+        }
+
+        // Throw away the note
+        throwBtn.addEventListener('click', () => {
+            const text = noteText.value.trim();
+            
+            if (!text) {
+                noteText.placeholder = "Please write something first...";
+                noteText.focus();
+                return;
+            }
+
+            if (isAnimating) return;
+            isAnimating = true;
+
+            // Add to notes
+            notes.push({
+                text: text,
+                timestamp: Date.now()
+            });
+            saveNotes();
+
+            // Animate crumpling
+            paper.classList.add('crumpling');
+
+            setTimeout(() => {
+                // Clear and reset
+                noteText.value = '';
+                noteText.placeholder = "What's on your mind today?\n\nWrite freely. No one will judge.\nWhen you're ready, let it go...";
+                paper.classList.remove('crumpling');
+                
+                // Update trash
+                renderTrash();
+                
+                isAnimating = false;
+            }, 1200);
+        });
+
+        // Render trash bin
+        function renderTrash() {
+            if (notes.length === 0) {
+                trashBin.innerHTML = '<div class="empty-message">Nothing here yet. When you\'re ready, write and release.</div>';
+                return;
+            }
+
+            trashBin.innerHTML = '';
+            notes.forEach((note, index) => {
+                const ball = document.createElement('div');
+                ball.className = 'crumpled-ball';
+                ball.dataset.index = index;
+                ball.title = 'Click to reflect';
+                
+                ball.addEventListener('click', () => openNote(index));
+                
+                trashBin.appendChild(ball);
+            });
+        }
+
+        // Open a note
+        function openNote(index) {
+            const note = notes[index];
+            modalText.textContent = note.text;
+            modal.classList.add('active');
+        }
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Prevent animation on Enter key
+        noteText.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                throwBtn.click();
+            }
+        });
+
+        // Initialize
+        loadNotes();
+    </script>
+</body>
+</html>

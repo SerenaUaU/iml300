@@ -1,8 +1,8 @@
 .sketch {
-  /*display: none;*/
-  margin-top: 10px;
+    /*display: none;*/
+    margin-top: 10px;
 }
 
 .sketch:hover .sketch {
-  display: block;
+    display: block;
 }
