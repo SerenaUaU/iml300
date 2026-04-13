@@ -1,0 +1,184 @@
+.homepage {
+    background-image: url("assets/bp.heic");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.history {
+    background-image: url("assets/Stay.JPG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#homepage {
+    font-family: "Kranky", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 8em;
+    position: fixed;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    text-align: center;
+    color: #fff;
+}
+
+#menu {
+    margin: 0;
+    padding: 0;
+    font-family: "Kranky", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dc1414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+#menu ul {
+    position: relative;
+}
+#menu ul li {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    display: block;
+}
+#menu ul li a {
+    position: relative;
+    text-decoration: none;
+    font-size: 3.5em;
+    padding: 0 10px;
+    color: #fff;
+    font-weight: 700;
+}
+#menu ul li a:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(243, 222, 34, 0.64);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: 0.5s transform;
+}
+#menu ul li a:hover:before {
+    transform: translateY(-50%) scaleX(1);
+    transform-origin: left;
+    transition: 0.5s transform;
+}
+
+#toggleIcon {
+    position: fixed;
+    top: 2.5rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 255, 255) url(assets/list.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2rem 2rem 2rem;
+    text-transform: uppercase;
+    /*letter-spacing: -1px;*/
+    /*transform: scaleY(1.3);*/
+    line-height: 0.9;
+    align-items: center;
+}
+.header-middle {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Krona One", sans-serif;
+    font-size: 1.7em;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    letter-spacing: 4px;
+}
+.header-left {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "Kranky", serif;
+}
+
+/*
+.history-column {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+*/
+.history-column {
+    flex: 0 0 320px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+.pic {
+    width: 300px;
+}
+.history-column h1,
+.history-column h2 {
+    margin-bottom: 16px;
+}
+
+.history-column p {
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    font-weight: 600;
+}
+.year {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.enable-scroll {
+    position: absolute;
+    top: 154px;
+    bottom: 36px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 40px 80px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: rgba(255, 255, 255, 0.73);
+    color: #0e0e0e;
+}
