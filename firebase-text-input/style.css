@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap");
 
 body {
   background-color: #dcdad5;
-  font-family: 'Lora', Georgia, serif;
+  font-family: "Lora", Georgia, serif;
 }
 
 .container {
@@ -14,11 +14,11 @@ input[type="text"] {
   height: 44px;
   border: 1px solid #b5b0a8;
   border-radius: 22px;
-  background-color: rgba(255,255,255,0.35);
+  background-color: rgba(255, 255, 255, 0.35);
   padding: 5px 18px;
   margin-bottom: 20px;
   color: #5a5650;
-  font-family: 'Lora', Georgia, serif;
+  font-family: "Lora", Georgia, serif;
   font-size: 14px;
   outline: none;
   width: 260px;
@@ -37,18 +37,20 @@ input[type="submit"] {
   height: 44px;
   border: 1px solid #b5b0a8;
   border-radius: 22px;
-  background-color: rgba(255,255,255,0.25);
+  background-color: rgba(255, 255, 255, 0.25);
   padding: 5px 22px;
   margin-bottom: 20px;
   color: #6e6a65;
-  font-family: 'Lora', Georgia, serif;
+  font-family: "Lora", Georgia, serif;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 input[type="submit"]:hover {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   color: #4a4742;
 }
 
@@ -72,7 +74,9 @@ input[type="submit"]:disabled {
 .response {
   padding: 0.9em 1.3em;
   cursor: default;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
