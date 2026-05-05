@@ -106,7 +106,7 @@ a:hover {
     align-items: center; /*左中右排列*/
     flex-wrap: wrap;
 }
-#pecha{
+#pecha {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -175,8 +175,15 @@ footer {
         padding: 2vh;
     }
 }
-#artist{
-    width:25vw;
-    height:auto;
+#artist {
+    width: 25vw;
+    height: auto;
     margin-top: 15px;
+}
+#intro {
+    width: 40vw;
+    line-height: 25px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
