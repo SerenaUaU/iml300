@@ -127,6 +127,7 @@ h2 {
 }
 p {
     line-height: 20px;
+    font-size: 15px;
 }
 html {
     scroll-behavior: smooth;
