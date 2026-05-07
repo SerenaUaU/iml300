@@ -1,0 +1,257 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inconsolata", monospace;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.background {
+    position: fixed;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    color: #dadada;
+    z-index: -1;
+    overflow: hidden;
+}
+.navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    flex-wrap: wrap;
+    width: 13%;
+    height: 100%;
+    margin-top: 6vh;
+    margin-left: 0;
+    z-index: 1;
+}
+.nav {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1px;
+    li {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        gap: 1px;
+    }
+    a {
+        margin: 4px;
+        color: #000;
+        /*text-decoration: none;*/
+        line-height: 11px;
+    }
+}
+a {
+    margin: 2px;
+    color: #000;
+}
+a:hover {
+    color: #94dfde;
+}
+.container {
+    position: relative;
+    width: 76vw;
+    left: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#home {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+    margin-left: 16vw;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+#title {
+    width: 80vw;
+    margin-top: 32vh;
+    margin-left: 5vh;
+    margin-bottom: 5vh;
+}
+#intro {
+    width: 63vw;
+    line-height: 25px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.self,
+.project1,
+.project2,
+.project3,
+.conclusion,
+.projects {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; /*左中右排列*/
+    flex-wrap: wrap;
+}
+h1 {
+    margin-top: 10vh;
+    margin-bottom: 0;
+    font-size: 50px;
+    font-family: "Meddon", cursive;
+    /*color:#6ecbcb;*/
+}
+h2 {
+    font-size: 25px;
+    color: #82c4c8;
+    /*text-decoration: underline;*/
+    text-align: center;
+}
+p {
+    line-height: 24px;
+    font-size: 16px;
+}
+html {
+    scroll-behavior: smooth;
+}
+.container {
+    position: relative;
+    width: 76vw;
+    left: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.self {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*
+    h1{
+        color:#82c4c8;
+    }
+    */
+}
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.portrait {
+    height: 300px;
+    width: auto;
+}
+#project1 {
+    width: 450px;
+}
+#imageproj {
+    width: 400px;
+    height: auto;
+}
+#digiproj {
+    width: 580px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.projects {
+    font-size: 20px;
+    font-family: "Meddon", cursive;
+}
+#imagetitle {
+    h2 {
+        color: crimson;
+    }
+}
+#imageproj {
+    width: 18vw;
+    transition: transform 0.4s ease;
+}
+#imageproj:hover {
+    transform: scale(1.1);
+    /*
+    filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #afc6ff) drop-shadow(0 0 20px #afc6ff)
+        drop-shadow(0 0 40px #afc6ff);
+        */
+}
+#project1:has(#imageproj:hover) #hover-text {
+    opacity: 1;
+}
+#hover-text {
+    position: fixed;
+    top: 88%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+
+    width: 50vw;
+    pointer-events: none;
+    z-index: 999;
+
+    font-family: impact;
+    font-size: 1.5vw;
+    line-height: 1.5;
+    text-align: left;
+    color: #ff0000;
+
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+#hover-text::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+
+    z-index: -1;
+}
+
+.quotes {
+    border: 3px solid #94dfde;
+    background-color: rgba(255, 255, 255, 0.15);
+
+    padding: 10px;
+    text-align: left;
+
+    width: 41vw;
+
+    font-style: italic;
+    line-height: 1.6;
+    color: crimson;
+    align-items: center;
+}
+.conclusion {
+    margin-top: 10vh;
+    margin-bottom: 7vw;
+    h1 {
+        color: #82c4c8;
+    }
+}
+footer {
+    display: flex;
+    /*gap: 5vw;*/
+    flex-direction: column;
+    margin-left: 4vw;
+    margin-bottom: 5vh;
+    margin-top: 10vh;
+    padding: 0;
+    img {
+        margin: 0;
+        padding: 0;
+        width: 10vw;
+        height: auto;
+    }
+}
